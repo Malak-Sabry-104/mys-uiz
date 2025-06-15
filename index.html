@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MysUiz</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <div id="wave-container" class="fixed inset-0 z-50 pointer-events-none transition-all duration-1000 opacity-0">
+      <div class="relative w-full h-full overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-pink-500 to-yellow-500 animate-pulse"></div>
+        
+        <div class="absolute bottom-0 w-full h-full">
+          <svg class="absolute bottom-0 w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none">
+            <path class="animate-wave-1" d="M0,800 C300,600 900,400 1200,600 L1200,800 Z" fill="rgba(236, 72, 153, 0.8)"/>
+            <path class="animate-wave-2" d="M0,800 C400,550 800,350 1200,550 L1200,800 Z" fill="rgba(245, 158, 11, 0.6)"/>
+            <path class="animate-wave-3" d="M0,800 C200,650 1000,450 1200,650 L1200,800 Z" fill="rgba(236, 72, 153, 0.4)"/>
+          </svg>
+        </div>
+        
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="text-white text-6xl bangers-regular animate-bounce">
+            LEVEL COMPLETE!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section id="landing" class="h-full w-full flex flex-col justify-center items-center relative">
+      <h1 class="text-[min(40vw,120px)] rajdhani-bold text-shadow-blue-200 text-shadow-lg">MysUiz</h1>
+      <input id="secret-input" class="mt-10 bg-slate-800 px-8 py-4 rounded-4xl placeholder:text-center text-center placeholder:text-slate-500 inset-shadow-black/60 inset-shadow-sm drop-shadow-2xl shadow-2xl outline-0 text-2xl transition-all translate-3 audiowide-regular" placeholder="Secret Code" type="text" maxlength="4" />
+      
+      <button id="open-secret" class="mt-6 px-8 py-3 bg-green-500 hover:bg-green-600 text-white rounded-4xl shadow-green-400/40 shadow-lg transition-all duration-300 transform hover:scale-105 audiowide-regular hidden">
+        Open Secret
+      </button>
+      
+      <div id="mys-1" class="mys-1 absolute bg-green-500 shadow-green-400/40 shadow-xl rounded-full flex justify-center items-center" style="top: 22px; left: 22px; width: 32px; height: 32px;">
+        <span class="w-full h-full flex justify-center items-center text-center rock-salt-regular" style="font-size: 18px; line-height: 1; transform: scale(1.2)">K</span>
+      </div>
+      <div id="mys-1-layer2" class="mys-1-layer2 absolute bg-green-500 shadow-green-400/40 shadow-xl rounded-full" style="top: 22px; left: 22px; width: 32px; height: 32px;"></div>
+
+      <div id="mys-2" class="hidden mys-2 absolute bg-red-500 shadow-red-400/40 shadow-xl rotate-45 flex justify-center items-center" style="bottom: 22px; right: 22px; width: 32px; height: 32px;">
+        <span class="w-full h-full flex justify-center items-center text-center rock-salt-regular" style="font-size: 18px; line-height: 1; transform: scale(1.2)">?</span>
+      </div>
+      <div id="mys-2-layer2" class="hidden mys-2-layer2 absolute bg-red-500 shadow-red-400/40 shadow-xl flex justify-center items-center animate-spin" style="bottom: 22px; right: 22px; width: 32px; height: 32px;">
+        <span class="text-red-500" style="font-size: 18px; line-height: 1; transform: scale(1.2)">V</span>
+      </div>
+      
+      <div id="mystery-3" class="mystery-3">
+        <img id="m-logo" src="/src/M.svg" alt="M logo" style="opacity: 0.005; transition: opacity 0.3s, filter 0.3s;" />
+      </div>
+      
+      <div id="x-ray" class="x-ray absolute w-100 h-100 rounded-full transition-all duration-600" style="opacity: 0; top:-500px; left:-500px;"></div>
+    </section>
+    
+    <section id="puzzle-2" class="hidden h-[100vh] justify-center items-center">
+      <div class="pin-lock flex flex-col items-center gap-6 ring-2 ring-cyan-900 p-4 rounded-2xl relative overflow-hidden">
+        <div class="screen min-w-60 min-h-20 bg-white/20 rounded-3xl flex justify-center items-center orbitron-400 text-2xl">
+          <span id="code2-display"></span>
+          <button id="delete-btn" class="ml-3 hidden">
+            <i class="fas fa-trash-alt" style="font-size: 20px;"></i>
+          </button>
+        </div>
+        <div class="btns grid grid-cols-3 gap-4">
+          <button class="btn calc-btn" data-value="1">1</button>
+          <button class="btn calc-btn" data-value="2">2</button>
+          <button class="btn calc-btn" data-value="3">3</button>
+          <button class="btn calc-btn" data-value="4">4</button>
+          <button class="btn calc-btn" data-value="5">5</button>
+          <button class="btn calc-btn" data-value="6">6</button>
+          <button class="btn calc-btn" data-value="7">7</button>
+          <button class="btn calc-btn" data-value="8">8</button>
+          <button class="btn calc-btn" data-value="9">9</button>
+          <button class="btn calc-btn" data-value="B">B</button>
+          <button class="btn p-4 bg-cyan-200/10 rounded-2xl flex justify-center items-center orbitron-600 text-2xl hover:drop-shadow-xl hover:shadow-2xl scale-3d hover:scale-110 transition-all text-green-500 shadow-green-200/30" data-value="Hex">Hex</button>
+          <button class="btn calc-btn" data-value="D">D</button>
+        </div>
+        <div id="fillup" class="fillup absolute bottom-0 w-100 animate-pulse transition-all duration-500 h-0 bg-gradient-to-r from-pink-500 to-yellow-500 blur-2xl -z-10"></div>
+      </div>
+    </section>
+    
+    <section id="puzzle-3" class="hidden h-[100vh] flex-col justify-center items-center bg-slate-900 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-indigo-950 to-slate-900"></div>
+      
+      <div id="bg-stars" class="absolute inset-0"></div>
+      
+      <div class="relative z-10 text-center mb-8">
+        <h2 class="text-4xl bangers-regular text-white mb-4 flex justify-center items-center gap-2">
+          <i class="fas fa-heart" style="font-size: 42px; color: red;"></i>
+          Love
+        </h2>
+        <p class="text-lg text-slate-300 mb-2">Connect the stars to form a Heart</p>
+        <p class="text-sm text-slate-400">Click stars in the correct order: <span id="star-progress">0/9</span></p>
+      </div>
+      
+      <div class="relative w-full max-w-4xl h-96 border-2 border-cyan-500/30 rounded-xl bg-black/20 backdrop-blur-sm">
+        <svg id="star-lines" class="absolute inset-0 w-full h-full pointer-events-none"></svg>
+        
+        <div id="heart-stars" class="absolute inset-0">
+          <button class="star-btn" data-star-id="1" style="left: 50%; top: 25%; width: 8px; height: 8px;"></button>
+          <button class="star-btn" data-star-id="2" style="left: 40%; top: 20%; width: 6px; height: 6px;"></button>
+          <button class="star-btn" data-star-id="3" style="left: 35%; top: 30%; width: 7px; height: 7px;"></button>
+          <button class="star-btn" data-star-id="4" style="left: 38%; top: 45%; width: 8px; height: 8px;"></button>
+          <button class="star-btn" data-star-id="5" style="left: 45%; top: 50%; width: 6px; height: 6px;"></button>
+          <button class="star-btn" data-star-id="6" style="left: 50%; top: 55%; width: 7px; height: 7px;"></button>
+          <button class="star-btn" data-star-id="7" style="left: 62%; top: 45%; width: 6px; height: 6px;"></button>
+          <button class="star-btn" data-star-id="8" style="left: 65%; top: 30%; width: 4px; height: 4px;"></button>
+          <button class="star-btn" data-star-id="9" style="left: 60%; top: 20%; width: 8px; height: 8px;"></button>
+        </div>
+      </div>
+      
+      <div class="relative z-10 mt-6 flex gap-4">
+        <button id="reset-stars" class="px-6 py-2 bg-slate-700 hover:bg-slate-600 rounded-full transition-colors duration-200">
+          Reset
+        </button>
+      </div>
+    </section>
+
+    <div id="modal" class="fixed top-0 left-0 w-full h-full z-50 flex items-center justify-center backdrop-blur-sm transition-opacity duration-300 opacity-0 pointer-events-none" aria-modal="true" role="dialog">
+      <div class="absolute top-0 left-0 w-full h-full bg-black/50 transition-opacity duration-300 opacity-0"></div>
+      
+      <div class="relative w-full bg-slate-800 rounded-4xl shadow-green-400/30 shadow-2xl transform transition-all duration-300 max-w-2xl scale-95 translate-y-8">
+        <div class="flex items-center justify-between border-b border-slate-700 p-4">
+          <h3 id="modal-title" class="text-xl text-white font-semibold audiowide-regular"></h3>
+          <button id="close-modal" class="text-slate-400 hover:text-white transition-colors duration-200 ml-auto p-1 rounded-full hover:bg-slate-700 focus:outline-none" aria-label="Close modal">
+            <i class="fas fa-times hover:text-red-500" style="font-size: 24px;"></i>
+          </button>
+        </div>
+        
+        <div id="modal-content" class="p-6 text-slate-200"></div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
